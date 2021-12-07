@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tomer\\source\\repos\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj": {}
+    "C:\\reps\\PrimGraphAlgorithm\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tomer\\source\\repos\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj": {
+    "C:\\reps\\PrimGraphAlgorithm\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tomer\\source\\repos\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj",
+        "projectUniqueName": "C:\\reps\\PrimGraphAlgorithm\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj",
         "projectName": "PrimeAlgorithem",
-        "projectPath": "C:\\Users\\Tomer\\source\\repos\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj",
+        "projectPath": "C:\\reps\\PrimGraphAlgorithm\\PrimeAlgorithem\\PrimeAlgorithem\\PrimeAlgorithem.csproj",
         "packagesPath": "C:\\Users\\Tomer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tomer\\source\\repos\\PrimeAlgorithem\\PrimeAlgorithem\\obj\\",
+        "outputPath": "C:\\reps\\PrimGraphAlgorithm\\PrimeAlgorithem\\PrimeAlgorithem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
