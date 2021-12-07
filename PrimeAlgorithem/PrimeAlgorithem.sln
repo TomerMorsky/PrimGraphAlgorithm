@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeAlgorithem", "PrimeAlgorithem\PrimeAlgorithem.csproj", "{F3A38A4A-6637-4433-B607-839B4606981A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3A38A4A-6637-4433-B607-839B4606981A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A38A4A-6637-4433-B607-839B4606981A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A38A4A-6637-4433-B607-839B4606981A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A38A4A-6637-4433-B607-839B4606981A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6ED79425-9B1F-4CC0-BBFD-7EFDF18F82E8}
+	EndGlobalSection
+EndGlobal
