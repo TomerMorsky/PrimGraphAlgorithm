@@ -65,8 +65,6 @@ namespace PrimeAlgorithem
         }
 
 
-
-
         public void PrintNode()
         {
             Console.WriteLine("Node: " + this.Id);

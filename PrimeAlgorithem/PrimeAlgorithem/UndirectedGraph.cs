@@ -36,6 +36,14 @@ namespace PrimeAlgorithem
             toVertex.AddNeighbor(fromVertex, weight);
         }
 
+        public void AddEdge(int fromVertexIndex, int toVertexIndex, int weight)
+        {
+            var fromVertex = Vertices[fromVertexIndex];
+            var toVertex = Vertices[toVertexIndex];
+
+            AddEdge(fromVertex, toVertex, weight);
+        }
+
         public void DeleteEdge(Vertex fromVertex, Vertex toVertex)
         {
             fromVertex.RemoveNeighbor(toVertex);
