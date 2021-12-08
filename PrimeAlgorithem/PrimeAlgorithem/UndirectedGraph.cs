@@ -8,21 +8,26 @@ namespace PrimeAlgorithem
 {
     public class UndirectedGraph
     {
-        public List<Vertex> _vertices;
-        private int _emptyIndex;
+        #region Properties
+
+        public List<Vertex> Vertices;
+
+        #endregion
+
+        #region C'tor
 
         public UndirectedGraph()
         {
-            _vertices = new List<Vertex>();
-            _emptyIndex = 0;
+            Vertices = new List<Vertex>();
         }
+
+        #endregion
 
         #region Public methods
 
         public void AddVertex(Vertex vertex)
         {
-            _vertices[_emptyIndex] = vertex;
-            _emptyIndex++;
+            Vertices.Add(vertex);
         }
 
         public void AddEdge(Vertex fromVertex, Vertex toVertex, int weight)
@@ -37,10 +42,15 @@ namespace PrimeAlgorithem
             toVertex.RemoveNeighbor(fromVertex);
         }
 
+        public bool HasEdge(Vertex fromVertex, Vertex toVertex)
+        {
+            return fromVertex.Neighbors.Contains(new Edge(fromVertex, toVertex));
+        }
+
         public void PrintGraph()
         {
             Console.WriteLine("Graph:");
-            foreach (var vertex in _vertices)
+            foreach (var vertex in Vertices)
             {
                 Console.Write("Vertex: " + vertex.Id + ", edges: ");
                 foreach (var edge in vertex.Neighbors)
