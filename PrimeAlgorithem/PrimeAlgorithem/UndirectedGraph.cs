@@ -61,6 +61,14 @@ namespace PrimeAlgorithem
             return fromVertex.Neighbors.Contains(new Edge(fromVertex, toVertex));
         }
 
+        public bool HasEdge(int fromVertexIndex, int toVertexIndex)
+        {
+            var fromVertex = Vertices[fromVertexIndex];
+            var toVertex = Vertices[toVertexIndex];
+
+            return fromVertex.Neighbors.Contains(new Edge(fromVertex, toVertex));
+        }
+
         public void PrintGraph()
         {
             Console.WriteLine("Graph:");

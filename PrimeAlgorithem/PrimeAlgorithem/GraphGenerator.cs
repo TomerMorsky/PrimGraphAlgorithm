@@ -1,27 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrimeAlgorithem
 {
     public class GraphGenerator
     {
-        public GraphGenerator() {   }
+        #region Public methods
 
-        public UndirectedGraph generateUndirectedGraphWithCircles(
+        public static UndirectedGraph GenerateUndirectedGraphWithCircles(
             int numberOfVerties,
             int numberOfEdges,
             int maxEdgeWeight)
         {
             var undirectedGraph = CreateConnectedGraphWithoutCircles(numberOfVerties, maxEdgeWeight);
 
-            var currentNumberOfEdges = numberOfVerties - 1;
-            undirectedGraph = AddRandomEdgesToGraph(undirectedGraph, numberOfEdges - currentNumberOfEdges);
+            var numberOfEdgesToAdd = numberOfEdges - numberOfVerties - 1;
+
+            for (int i = 0; i < numberOfEdgesToAdd; i++)
+            {
+                undirectedGraph = AddRandomEdge(undirectedGraph, maxEdgeWeight);
+            }
 
             return undirectedGraph;
         }
+
+        #endregion
+
+        #region Private methods
 
         private static UndirectedGraph CreateConnectedGraphWithoutCircles(int numberOfVerties, int maxEdgeWeight)
         {
@@ -45,15 +49,27 @@ namespace PrimeAlgorithem
             return undirectedGraph;
         }
 
-        private static UndirectedGraph AddRandomEdgesToGraph(UndirectedGraph undirectedGraph, int numberOfEdges)
+        private static UndirectedGraph AddRandomEdge(UndirectedGraph graph, int maxEdgeWeight)
         {
-            // Add additional edges
-            
-            for (int i = 0; i < numberOfEdges; i++)
-            {
+            const int MIN_EDGE_WEIGHT = 1;
+            var rnd = new Random();
+            var numberOfVerties = graph.Vertices.Count;
 
+            int fromVertexIndex = rnd.Next(numberOfVerties);
+            int toVertexIndex = rnd.Next(numberOfVerties);
+
+            while (fromVertexIndex == toVertexIndex || graph.HasEdge(fromVertexIndex, toVertexIndex))
+            {
+                fromVertexIndex = rnd.Next(numberOfVerties);
+                toVertexIndex = rnd.Next(numberOfVerties);
             }
+
+            int randomWeight = rnd.Next(MIN_EDGE_WEIGHT, maxEdgeWeight);
+            graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
+
+            return graph;
         }
-           
+
+        #endregion
     }
 }
