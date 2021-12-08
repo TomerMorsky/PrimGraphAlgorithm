@@ -32,6 +32,12 @@ namespace PrimeAlgorithem
 
         public void AddEdge(Vertex fromVertex, Vertex toVertex, int weight)
         {
+            var newEdge = new Edge(fromVertex, toVertex, weight);
+
+            if (fromVertex.Neighbors.Contains(newEdge) ||
+                toVertex.Neighbors.Contains(newEdge))
+                throw new Exception("Neighbor is already exist");
+
             fromVertex.AddNeighbor(toVertex, weight);
             toVertex.AddNeighbor(fromVertex, weight);
         }
@@ -58,16 +64,16 @@ namespace PrimeAlgorithem
         public void PrintGraph()
         {
             Console.WriteLine("Graph:");
+
             foreach (var vertex in Vertices)
             {
                 Console.Write("Vertex: " + vertex.Id + ", edges: ");
                 foreach (var edge in vertex.Neighbors)
-                {
                     Console.Write(" -> " + edge.Destination.Id);
-                }
-               
+                
                 Console.WriteLine();
             }
+
             Console.WriteLine();
         }
 

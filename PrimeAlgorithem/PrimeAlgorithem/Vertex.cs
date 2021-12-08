@@ -56,7 +56,7 @@ namespace PrimeAlgorithem
 
         public void AddNeighbor(Vertex neighbor, int weight)
         {
-            Neighbors.Add(new Edge(this, neighbor, weight));
+            this.AddNeighbor(new Edge(this, neighbor, weight));
         }
 
         public void RemoveNeighbor(Vertex neighbor)

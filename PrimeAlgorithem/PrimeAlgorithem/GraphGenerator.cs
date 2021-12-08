@@ -8,32 +8,51 @@ namespace PrimeAlgorithem
 {
     public class GraphGenerator
     {
-        public UndirectedGraph UndirectedGraph;
+        public GraphGenerator() {   }
 
-        public GraphGenerator()
+        public UndirectedGraph generateUndirectedGraphWithCircles(
+            int numberOfVerties,
+            int numberOfEdges,
+            int maxEdgeWeight)
         {
-            UndirectedGraph = new UndirectedGraph();
+            var undirectedGraph = CreateConnectedGraphWithoutCircles(numberOfVerties, maxEdgeWeight);
+
+            var currentNumberOfEdges = numberOfVerties - 1;
+            undirectedGraph = AddRandomEdgesToGraph(undirectedGraph, numberOfEdges - currentNumberOfEdges);
+
+            return undirectedGraph;
         }
 
-        public UndirectedGraph generateUndirectedGraph(int numberOfVerties, int maxEdgeWeight)
+        private static UndirectedGraph CreateConnectedGraphWithoutCircles(int numberOfVerties, int maxEdgeWeight)
         {
             var random = new Random();
+            var undirectedGraph = new UndirectedGraph();
 
-            UndirectedGraph.AddVertex(new Vertex(0));
+            undirectedGraph.AddVertex(new Vertex(0));
 
-            // Create all verties of the graph
+            // Create connected graph without circles. The number of edges will be numberOfVerties - 1 
             for (int currentVertexIndex = 1; currentVertexIndex < numberOfVerties; currentVertexIndex++)
             {
                 var newVertex = new Vertex(currentVertexIndex);
-                UndirectedGraph.AddVertex(newVertex);
+                undirectedGraph.AddVertex(newVertex);
 
                 var ramdomTargetIndex = random.Next(0, currentVertexIndex); // The target can't be the new vertex
                 var randomWeight = random.Next(0, maxEdgeWeight);
 
-                UndirectedGraph.AddEdge(currentVertexIndex, ramdomTargetIndex, randomWeight);
+                undirectedGraph.AddEdge(currentVertexIndex, ramdomTargetIndex, randomWeight);
             }
 
-            return UndirectedGraph;
+            return undirectedGraph;
+        }
+
+        private static UndirectedGraph AddRandomEdgesToGraph(UndirectedGraph undirectedGraph, int numberOfEdges)
+        {
+            // Add additional edges
+            
+            for (int i = 0; i < numberOfEdges; i++)
+            {
+
+            }
         }
            
     }

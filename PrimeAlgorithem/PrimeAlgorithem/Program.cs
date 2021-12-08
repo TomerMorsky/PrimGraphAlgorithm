@@ -7,8 +7,8 @@ namespace PrimeAlgorithem
         static void Main(string[] args)
         {
             GraphGenerator graphGenerator = new GraphGenerator();
-            graphGenerator.generateUndirectedGraph(10, 20);
-            graphGenerator.UndirectedGraph.PrintGraph();
+            var graph = graphGenerator.generateUndirectedGraph(10, 20);
+            graph.PrintGraph();
 
             Console.WriteLine("Hello World!");
         }
