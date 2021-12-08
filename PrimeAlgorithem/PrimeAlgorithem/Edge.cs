@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrimeAlgorithem
 {
-    internal class Edge
+    public class Edge
     {
         #region Properties
 
@@ -18,10 +18,15 @@ namespace PrimeAlgorithem
 
         #region C'tor
 
-        public Edge(Vertex source, Vertex destination, int wiehght)
+        public Edge(Vertex source, Vertex destination)
         {
             Source = source;
             Destination = destination;
+        }
+
+        public Edge(Vertex source, Vertex destination, int wiehght): 
+            this(source, destination)
+        {
             Weight = wiehght;
         }
 

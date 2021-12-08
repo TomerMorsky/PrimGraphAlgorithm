@@ -8,6 +8,12 @@ namespace PrimeAlgorithem
 {
     public class Vertex
     {
+        #region Fields
+
+        public List<Edge> Neighbors;
+
+        #endregion
+
         #region Properties
 
         public int Id;
@@ -26,6 +32,7 @@ namespace PrimeAlgorithem
         public Vertex(int id)
         {
             Id = id;
+            Neighbors = new List<Edge>();
         }
 
         #endregion
@@ -41,6 +48,24 @@ namespace PrimeAlgorithem
         #endregion
 
         #region Public methods
+
+        public void AddNeighbor(Edge neighbor)
+        {
+            Neighbors.Add(neighbor);
+        }
+
+        public void AddNeighbor(Vertex neighbor, int weight)
+        {
+            Neighbors.Add(new Edge(this, neighbor, weight));
+        }
+
+        public void RemoveNeighbor(Vertex neighbor)
+        {
+            Neighbors.Remove(new Edge(this, neighbor));
+        }
+
+
+
 
         public void PrintNode()
         {
