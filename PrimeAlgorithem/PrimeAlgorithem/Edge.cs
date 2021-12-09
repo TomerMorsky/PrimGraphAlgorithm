@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrimeAlgorithem
 {
-    public class Edge
+    public class Edge: IComparable<Edge>
     {
         #region Properties
 
@@ -44,6 +44,12 @@ namespace PrimeAlgorithem
         #endregion
 
         #region Public methods
+        public int CompareTo(Edge other)
+        {
+            if (other == null) return 1;
+
+            return Weight.CompareTo(other.Weight);
+        }
 
         public void PrintEdge()
         {
