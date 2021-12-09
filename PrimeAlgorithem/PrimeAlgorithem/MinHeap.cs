@@ -8,24 +8,26 @@ namespace PrimeAlgorithem
         #region Fields
 
         private readonly List<T> _elements;
-        private int _size;
 
         #endregion
 
         #region C'tor
-        public MinHeap(){}
+        public MinHeap()
+        {
+            _elements = new List<T>();
+        }
         #endregion
 
         #region Public methods
 
         public bool IsEmpty()
         {
-            return _size == 0;
+            return _elements.Count == 0;
         }
 
         public T Peek()
         {
-            if (_size == 0)
+            if (_elements.Count == 0)
                 throw new IndexOutOfRangeException();
 
             return _elements[0];
@@ -33,25 +35,22 @@ namespace PrimeAlgorithem
 
         public T Pop()
         {
-            if (_size == 0)
+            if (_elements.Count == 0)
                 throw new IndexOutOfRangeException();
 
             var result = _elements[0];
-            _elements[0] = _elements[_size - 1];
-            _size--;
+            _elements[0] = _elements[_elements.Count - 1];
+            //_elements.RemoveAt(_elements.Count - 1);
 
             ReCalculateDown();
+            _elements.RemoveAt(_elements.Count - 1);
 
             return result;
         }
 
         public void Add(T element)
         {
-            if (_size == _elements.Count)
-                throw new IndexOutOfRangeException();
-
-            _elements[_size] = element;
-            _size++;
+            _elements.Add(element);
 
             ReCalculateUp();
         }
@@ -60,8 +59,8 @@ namespace PrimeAlgorithem
 
         #region Private methods
 
-        private bool HasLeftChild(int elementIndex) => GetLeftChildIndex(elementIndex) < _size;
-        private bool HasRightChild(int elementIndex) => GetRightChildIndex(elementIndex) < _size;
+        private bool HasLeftChild(int elementIndex) => GetLeftChildIndex(elementIndex) < _elements.Count;
+        private bool HasRightChild(int elementIndex) => GetRightChildIndex(elementIndex) < _elements.Count;
 
         private T GetLeftChild(int elementIndex) => _elements[GetLeftChildIndex(elementIndex)];
         private T GetRightChild(int elementIndex) => _elements[GetRightChildIndex(elementIndex)];
@@ -97,7 +96,7 @@ namespace PrimeAlgorithem
 
         private void ReCalculateUp()
         {
-            var index = _size - 1;
+            var index = _elements.Count - 1;
             while (!IsRoot(index) && _elements[index].CompareTo(GetParent(index)) < 0)
             {
                 var parentIndex = GetParentIndex(index);
