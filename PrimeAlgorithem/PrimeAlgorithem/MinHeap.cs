@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PrimeAlgorithem
 {
-    public class MaxHeap<T> where T : IComparable<T>
+    public class MinHeap<T> where T : IComparable<T>
     {
         #region Fields
 
@@ -13,7 +13,7 @@ namespace PrimeAlgorithem
         #endregion
 
         #region C'tor
-        public MaxHeap(){}
+        public MinHeap(){}
         #endregion
 
         #region Public methods
@@ -79,26 +79,26 @@ namespace PrimeAlgorithem
             int index = 0;
             while (HasLeftChild(index))
             {
-                var biggerIndex = GetLeftChildIndex(index);
-                if (HasRightChild(index) && GetRightChild(index).CompareTo(GetLeftChild(index)) > 0)
+                var smallerIndex = GetLeftChildIndex(index);
+                if (HasRightChild(index) && GetRightChild(index).CompareTo(GetLeftChild(index)) < 0)
                 {
-                    biggerIndex = GetRightChildIndex(index);
+                    smallerIndex = GetRightChildIndex(index);
                 }
 
-                if (_elements[biggerIndex].CompareTo(_elements[index]) < 0)
+                if (_elements[smallerIndex].CompareTo(_elements[index]) >= 0)
                 {
                     break;
                 }
 
-                Swap(biggerIndex, index);
-                index = biggerIndex;
+                Swap(smallerIndex, index);
+                index = smallerIndex;
             }
         }
 
         private void ReCalculateUp()
         {
             var index = _size - 1;
-            while (!IsRoot(index) && _elements[index].CompareTo(GetParent(index)) > 0)
+            while (!IsRoot(index) && _elements[index].CompareTo(GetParent(index)) < 0)
             {
                 var parentIndex = GetParentIndex(index);
                 Swap(parentIndex, index);
