@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrimeAlgorithem
 {
-    public class Vertex
+    public class Vertex : IComparable<Vertex>
     {
         #region Fields
 
@@ -17,9 +17,9 @@ namespace PrimeAlgorithem
         #region Properties
 
         public int Id;
-        public int Key;
+        public int lowestWeightToVertex;
 
-        public int Prim_pi;
+        public Vertex Prim_pi;
 
         public string BFS_color;
         public int BFS_d;
@@ -69,7 +69,14 @@ namespace PrimeAlgorithem
         {
             Console.WriteLine("Node: " + this.Id);
             Console.WriteLine("prev PRIM: " + this.Prim_pi);
-            Console.WriteLine("Key: " + this.Key);
+            Console.WriteLine("Key: " + this.lowestWeightToVertex);
+        }
+
+        public int CompareTo(Vertex other)
+        {
+            if (other == null) return 1;
+
+            return lowestWeightToVertex.CompareTo(other.lowestWeightToVertex);
         }
 
         #endregion

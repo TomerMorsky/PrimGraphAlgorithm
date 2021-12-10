@@ -6,10 +6,10 @@ namespace PrimeAlgorithem
     {
         static void Main(string[] args)
         {
-            var graph = GraphGenerator.GenerateUndirectedGraphWithCircles(10, 20, 7);
+            var graph = GraphGenerator.GenerateUndirectedGraphWithCircles(5, 8, 7);
             graph.PrintGraph();
 
-            MinHeap<int> heap = new MinHeap<int>();
+            var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
 
             Console.WriteLine("Hello World!");
         }

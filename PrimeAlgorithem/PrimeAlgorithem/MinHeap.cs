@@ -12,10 +12,18 @@ namespace PrimeAlgorithem
         #endregion
 
         #region C'tor
+
         public MinHeap()
         {
             _elements = new List<T>();
         }
+
+        public MinHeap(IEnumerable<T> elements): this()
+        {
+            foreach (T element in elements)
+                Add(element);
+        }
+
         #endregion
 
         #region Public methods
@@ -53,6 +61,16 @@ namespace PrimeAlgorithem
             _elements.Add(element);
 
             ReCalculateUp();
+        }
+
+        public void ForceHeapUpdate()
+        {
+            this.ReCalculateUp();
+        }
+
+        public bool Contains(T elemant)
+        {
+            return _elements.Contains(elemant);
         }
 
         #endregion

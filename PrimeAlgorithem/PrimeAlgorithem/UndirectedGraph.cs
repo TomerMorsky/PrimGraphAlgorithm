@@ -34,7 +34,7 @@ namespace PrimeAlgorithem
 
             if (fromVertex.Neighbors.Contains(newEdge) ||
                 toVertex.Neighbors.Contains(newEdge))
-                throw new Exception("Neighbor is already exist");
+                return;
 
             fromVertex.AddNeighbor(toVertex, weight);
             toVertex.AddNeighbor(fromVertex, weight);
@@ -75,7 +75,7 @@ namespace PrimeAlgorithem
             {
                 Console.Write("Vertex: " + vertex.Id + ", edges: ");
                 foreach (var edge in vertex.Neighbors)
-                    Console.Write(" -> " + edge.Destination.Id);
+                    Console.Write(" -> " + edge.Destination.Id + ", weight: " + edge.Weight);
                 
                 Console.WriteLine();
             }
