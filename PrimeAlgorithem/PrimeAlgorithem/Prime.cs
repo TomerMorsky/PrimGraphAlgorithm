@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrimeAlgorithem
 {
@@ -41,11 +37,9 @@ namespace PrimeAlgorithem
             }
 
             foreach (var vertex in graph.Vertices)
-            {
                 if(vertex.Prim_pi != null)
                     mstTree.AddEdge(vertex.Id, vertex.Prim_pi.Id, vertex.lowestWeightToVertex);
                 
-            }
 
             return mstTree;
         }
