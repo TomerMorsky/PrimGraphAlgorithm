@@ -10,7 +10,7 @@ namespace PrimeAlgorithem
     {
         private const int INFINITY = Int32.MaxValue;
 
-        public static UndirectedGraph GetMstPrim(UndirectedGraph graph, Vertex startNode)
+        public static UndirectedGraph GetMstPrim(UndirectedGraph graph, Vertex startVertex)
         {
             var mstTree = new UndirectedGraph();
 
@@ -21,7 +21,7 @@ namespace PrimeAlgorithem
                 mstTree.AddVertex(new Vertex(vertex.Id)); // We don't want the same instance to be in the new tree
             }
 
-            startNode.lowestWeightToVertex = 0;
+            startVertex.lowestWeightToVertex = 0;
 
             var minHeap = new MinHeap<Vertex>(graph.Vertices);
 
@@ -29,12 +29,13 @@ namespace PrimeAlgorithem
             {
                 var currentVertex = minHeap.Pop();
 
-                foreach (var neighbor in currentVertex.Neighbors)
+                foreach (var edge in currentVertex.Edges)
                 {
-                    if (minHeap.Contains(neighbor.Destination) && neighbor.Weight < neighbor.Destination.lowestWeightToVertex)
+                    if (minHeap.Contains(edge.Destination) && edge.Weight < edge.Destination.lowestWeightToVertex)
                     {
-                        neighbor.Destination.Prim_pi = currentVertex;
-                        neighbor.Destination.lowestWeightToVertex = neighbor.Weight;
+                        edge.Destination.Prim_pi = currentVertex;
+                        edge.Destination.lowestWeightToVertex = edge.Weight;
+                        minHeap.ForceHeapUpdate();
                     }
                 }
             }

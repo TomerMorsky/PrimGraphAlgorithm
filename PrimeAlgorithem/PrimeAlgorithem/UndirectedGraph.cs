@@ -32,8 +32,8 @@ namespace PrimeAlgorithem
         {
             var newEdge = new Edge(fromVertex, toVertex, weight);
 
-            if (fromVertex.Neighbors.Contains(newEdge) ||
-                toVertex.Neighbors.Contains(newEdge))
+            if (fromVertex.Edges.Contains(newEdge) ||
+                toVertex.Edges.Contains(newEdge))
                 return;
 
             fromVertex.AddNeighbor(toVertex, weight);
@@ -56,7 +56,7 @@ namespace PrimeAlgorithem
 
         public bool HasEdge(Vertex fromVertex, Vertex toVertex)
         {
-            return fromVertex.Neighbors.Contains(new Edge(fromVertex, toVertex));
+            return fromVertex.Edges.Contains(new Edge(fromVertex, toVertex));
         }
 
         public bool HasEdge(int fromVertexIndex, int toVertexIndex)
@@ -64,7 +64,7 @@ namespace PrimeAlgorithem
             var fromVertex = Vertices[fromVertexIndex];
             var toVertex = Vertices[toVertexIndex];
 
-            return fromVertex.Neighbors.Contains(new Edge(fromVertex, toVertex));
+            return fromVertex.Edges.Contains(new Edge(fromVertex, toVertex));
         }
 
         public void PrintGraph()
@@ -74,7 +74,7 @@ namespace PrimeAlgorithem
             foreach (var vertex in Vertices)
             {
                 Console.Write("Vertex: " + vertex.Id + ", edges: ");
-                foreach (var edge in vertex.Neighbors)
+                foreach (var edge in vertex.Edges)
                     Console.Write(" -> " + edge.Destination.Id + ", weight: " + edge.Weight);
                 
                 Console.WriteLine();
