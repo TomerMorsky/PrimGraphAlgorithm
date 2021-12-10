@@ -35,7 +35,6 @@ namespace PrimeAlgorithem
                     {
                         neighbor.Destination.Prim_pi = currentVertex;
                         neighbor.Destination.lowestWeightToVertex = neighbor.Weight;
-                        //minHeap.DecreaseKey(neighbor.Destination, neighbor.Weight); TODO - not sure if needed because we use instance
                     }
                 }
             }
