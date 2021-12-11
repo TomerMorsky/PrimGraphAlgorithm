@@ -12,7 +12,6 @@ namespace PrimeAlgorithem
             var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
             mstTree.PrintGraph();
 
-            Console.WriteLine("Hello World!");
         }
     }
 }

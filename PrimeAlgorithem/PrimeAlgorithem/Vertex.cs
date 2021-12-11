@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static PrimeAlgorithem.BFS;
 
 namespace PrimeAlgorithem
 {
@@ -21,9 +19,9 @@ namespace PrimeAlgorithem
 
         public Vertex Prim_pi;
 
-        public string BFS_color;
+        public BFSColor BFS_color;
         public int BFS_d;
-        public int BFS_pi;
+        public Vertex BFS_pi;
 
         #endregion
 
