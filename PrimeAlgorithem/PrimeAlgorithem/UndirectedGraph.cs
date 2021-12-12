@@ -28,24 +28,26 @@ namespace PrimeAlgorithem
             Vertices.Add(vertex);
         }
 
-        public void AddEdge(Vertex fromVertex, Vertex toVertex, int weight)
+        public Edge AddEdge(Vertex fromVertex, Vertex toVertex, int weight)
         {
             var newEdge = new Edge(fromVertex, toVertex, weight);
 
             if (fromVertex.Edges.Contains(newEdge) ||
                 toVertex.Edges.Contains(newEdge))
-                return;
+                return null;
 
             fromVertex.AddNeighbor(toVertex, weight);
             toVertex.AddNeighbor(fromVertex, weight);
+
+            return newEdge;
         }
 
-        public void AddEdge(int fromVertexIndex, int toVertexIndex, int weight)
+        public Edge AddEdge(int fromVertexIndex, int toVertexIndex, int weight)
         {
             var fromVertex = Vertices[fromVertexIndex];
             var toVertex = Vertices[toVertexIndex];
 
-            AddEdge(fromVertex, toVertex, weight);
+            return AddEdge(fromVertex, toVertex, weight);
         }
 
         public void DeleteEdge(Vertex fromVertex, Vertex toVertex)
@@ -56,7 +58,7 @@ namespace PrimeAlgorithem
 
         public bool HasEdge(Vertex fromVertex, Vertex toVertex)
         {
-            return fromVertex.Edges.Contains(new Edge(fromVertex, toVertex));
+            return fromVertex.IsNeighbor(toVertex);
         }
 
         public bool HasEdge(int fromVertexIndex, int toVertexIndex)
@@ -64,7 +66,7 @@ namespace PrimeAlgorithem
             var fromVertex = Vertices[fromVertexIndex];
             var toVertex = Vertices[toVertexIndex];
 
-            return fromVertex.Edges.Contains(new Edge(fromVertex, toVertex));
+            return HasEdge(fromVertex, toVertex);
         }
 
         public void PrintGraph()
@@ -75,7 +77,7 @@ namespace PrimeAlgorithem
             {
                 Console.Write("Vertex: " + vertex.Id + ", edges: ");
                 foreach (var edge in vertex.Edges)
-                    Console.Write(" -> " + edge.Destination.Id + ", weight: " + edge.Weight);
+                    Console.Write(" -> (to:" + edge.Destination.Id + ", w:" + edge.Weight + ")");
                 
                 Console.WriteLine();
             }

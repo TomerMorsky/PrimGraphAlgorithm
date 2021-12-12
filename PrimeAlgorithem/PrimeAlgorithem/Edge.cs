@@ -51,11 +51,6 @@ namespace PrimeAlgorithem
             return Weight.CompareTo(other.Weight);
         }
 
-        public void PrintEdge()
-        {
-            
-        }
-
         #endregion
     }
 }

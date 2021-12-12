@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using static PrimeAlgorithem.DFS;
 
 namespace PrimeAlgorithem
@@ -55,6 +56,11 @@ namespace PrimeAlgorithem
         public void AddNeighbor(Vertex neighbor, int weight)
         {
             this.AddNeighbor(new Edge(this, neighbor, weight));
+        }
+
+        public bool IsNeighbor(Vertex neighbor)
+        {
+            return Edges.Any(edge => edge.Destination.Equals(neighbor));
         }
 
         public void RemoveNeighbor(Vertex neighbor)
