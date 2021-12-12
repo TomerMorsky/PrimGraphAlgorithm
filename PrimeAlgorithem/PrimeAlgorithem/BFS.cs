@@ -38,21 +38,20 @@ namespace PrimeAlgorithem
 
             while (Q.Count > 0)
             {
-                var uKey = Q.Dequeue();
-                Vertex u = G.V[uKey];
+                var currentVertex = Q.Dequeue();
 
-                foreach (int vKey in G.Adj[uKey])
+                foreach (var edge in currentVertex.Edges)
                 {
-                    Node v = G.V[vKey];
-                    if (v.BFS_color == "WHITE")
+                    var niebore = edge.Destination;
+                    if (niebore.BFS_color == BFSColor.WHITE)
                     {
-                        v.BFS_color = "GRAY";
-                        v.BFS_d = u.BFS_d + 1;
-                        v.BFS_pi = uKey;
-                        Q.Enqueue(vKey);
+                        niebore.BFS_color = BFSColor.GRAY;
+                        niebore.BFS_d = currentVertex.BFS_d + 1;
+                        niebore.BFS_pi = currentVertex;
+                        Q.Enqueue(niebore);
                     }
                 }
-                u.BFS_color = BFSColor.BLACK;
+                currentVertex.BFS_color = BFSColor.BLACK;
             }
         }
     }
