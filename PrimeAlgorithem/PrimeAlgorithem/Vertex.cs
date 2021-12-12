@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using static PrimeAlgorithem.DFS;
+using static PrimeAlgorithem.FindCircle;
 
 namespace PrimeAlgorithem
 {
@@ -17,7 +17,6 @@ namespace PrimeAlgorithem
 
         public int Id;
         public int lowestWeightToVertex;
-
         public Vertex Prim_pi;
         public DFSColor DFS_color;
         public int DFS_d;
@@ -68,6 +67,15 @@ namespace PrimeAlgorithem
             Edges.Remove(new Edge(this, neighbor));
         }
 
+        public void SetVisited()
+        {
+            DFS_color = DFSColor.GRAY;
+        }
+
+        public bool IsVisited()
+        {
+            return DFS_color != DFSColor.WHITE;
+        }
 
         public void PrintNode()
         {
@@ -75,6 +83,7 @@ namespace PrimeAlgorithem
             Console.WriteLine("prev PRIM: " + this.Prim_pi);
             Console.WriteLine("Key: " + this.lowestWeightToVertex);
         }
+
 
         public int CompareTo(Vertex other)
         {

@@ -10,7 +10,7 @@ namespace PrimeAlgorithem
     {
         public static UndirectedGraph AddEdgeToMstTree(UndirectedGraph graph, Edge newEdge)
         {
-            DFS.RunDFS(graph, newEdge.Source);
+            //FindCircle.RunDFS(graph, newEdge.Source);
             return graph;
         }
     }
