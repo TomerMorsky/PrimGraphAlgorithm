@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static PrimeAlgorithem.BFS;
+using static PrimeAlgorithem.DFS;
 
 namespace PrimeAlgorithem
 {
@@ -18,10 +18,10 @@ namespace PrimeAlgorithem
         public int lowestWeightToVertex;
 
         public Vertex Prim_pi;
-
-        public BFSColor BFS_color;
-        public int BFS_d;
-        public Vertex BFS_pi;
+        public DFSColor DFS_color;
+        public int DFS_d;
+        public int DFS_f;
+        public Vertex DFS_pi;
 
         #endregion
 
