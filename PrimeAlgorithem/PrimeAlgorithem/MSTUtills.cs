@@ -10,13 +10,10 @@ namespace PrimeAlgorithem
     {
         public static UndirectedGraph AddEdgeToMstTree(UndirectedGraph graph, Edge newEdge)
         {
-            //FindCircle.RunDFS(graph, newEdge.Source);
-            var endCycleVertex = FindCircle.FindCycle(graph, newEdge.Source);
+            var endCycleVertex = FindCircleUtill.Find(graph, newEdge.Source);
+            var currentVertex = endCycleVertex.DFS_pi;
 
-            var previousVertex = endCycleVertex;
-            var currentVertex = previousVertex.DFS_pi;
-
-            var maxWeightedEdge = graph.GetEdge(previousVertex, currentVertex);
+            var maxWeightedEdge = graph.GetEdge(endCycleVertex, currentVertex);
 
             while (!currentVertex.Equals(newEdge.Source))
             {
@@ -29,6 +26,7 @@ namespace PrimeAlgorithem
             if (maxWeightedEdge.Weight <= newEdge.Weight)
             {
                 Console.WriteLine("MST Not Changed");
+                graph.DeleteEdge(newEdge.Source, newEdge.Destination);
             }
             else
             {

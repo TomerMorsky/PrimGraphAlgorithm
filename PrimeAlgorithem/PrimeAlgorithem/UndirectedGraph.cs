@@ -42,6 +42,24 @@ namespace PrimeAlgorithem
             return newEdge;
         }
 
+        public Edge AddRandomEdge(UndirectedGraph graph, int minEdgeWeight, int maxEdgeWeight)
+        {
+            var random = new Random();
+            var numberOfVerties = graph.Vertices.Count;
+
+            int fromVertexIndex = random.Next(numberOfVerties);
+            int toVertexIndex = random.Next(numberOfVerties);
+
+            while (fromVertexIndex == toVertexIndex || graph.HasEdge(fromVertexIndex, toVertexIndex))
+            {
+                fromVertexIndex = random.Next(numberOfVerties);
+                toVertexIndex = random.Next(numberOfVerties);
+            }
+
+            int randomWeight = random.Next(minEdgeWeight, maxEdgeWeight);
+            return graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
+        }
+
         public Edge AddEdge(int fromVertexIndex, int toVertexIndex, int weight)
         {
             var fromVertex = Vertices[fromVertexIndex];

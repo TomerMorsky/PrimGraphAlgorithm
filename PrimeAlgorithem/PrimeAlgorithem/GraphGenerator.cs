@@ -9,6 +9,7 @@ namespace PrimeAlgorithem
         public static UndirectedGraph GenerateUndirectedGraphWithCircles(
             int numberOfVerties,
             int numberOfEdges,
+            int minEdgeWeight,
             int maxEdgeWeight)
         {
             var undirectedGraph = CreateConnectedGraphWithoutCircles(numberOfVerties, maxEdgeWeight);
@@ -17,7 +18,7 @@ namespace PrimeAlgorithem
 
             for (int i = 0; i < numberOfEdgesToAdd; i++)
             {
-                undirectedGraph = AddRandomEdge(undirectedGraph, maxEdgeWeight);
+                undirectedGraph.AddRandomEdge(undirectedGraph, minEdgeWeight, maxEdgeWeight);
             }
 
             return undirectedGraph;
@@ -47,27 +48,6 @@ namespace PrimeAlgorithem
             }
 
             return undirectedGraph;
-        }
-
-        private static UndirectedGraph AddRandomEdge(UndirectedGraph graph, int maxEdgeWeight)
-        {
-            const int MIN_EDGE_WEIGHT = 1;
-            var rnd = new Random();
-            var numberOfVerties = graph.Vertices.Count;
-
-            int fromVertexIndex = rnd.Next(numberOfVerties);
-            int toVertexIndex = rnd.Next(numberOfVerties);
-
-            while (fromVertexIndex == toVertexIndex || graph.HasEdge(fromVertexIndex, toVertexIndex))
-            {
-                fromVertexIndex = rnd.Next(numberOfVerties);
-                toVertexIndex = rnd.Next(numberOfVerties);
-            }
-
-            int randomWeight = rnd.Next(MIN_EDGE_WEIGHT, maxEdgeWeight);
-            graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
-
-            return graph;
         }
 
         #endregion

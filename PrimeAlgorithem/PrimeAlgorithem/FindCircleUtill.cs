@@ -2,10 +2,10 @@
 
 namespace PrimeAlgorithem
 {
-    public class FindCircle
+    public class FindCircleUtill
     {
 
-        public static Vertex FindCycle(UndirectedGraph graph, Vertex startVertex)
+        public static Vertex Find(UndirectedGraph graph, Vertex startVertex)
         {
             foreach (Vertex vertex in graph.Vertices)
             {

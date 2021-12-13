@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using static PrimeAlgorithem.FindCircle;
+using static PrimeAlgorithem.FindCircleUtill;
 
 namespace PrimeAlgorithem
 {
