@@ -23,11 +23,15 @@ namespace PrimeAlgorithem
             foreach (var edge in vertex.Edges)
             {
                 var neighbor = edge.Destination;
-                neighbor.DFS_pi = vertex;
+                
 
                 if (!neighbor.IsVisited())
                 {
-                    return FindCycleUtil(neighbor, vertex);
+                    neighbor.DFS_pi = vertex;
+                    var vertexDetectCycle = FindCycleUtil(neighbor, vertex);
+
+                    if (vertexDetectCycle != null)
+                        return vertexDetectCycle;
                 }
                 else if (!neighbor.Equals(parent))
                     return vertex;
