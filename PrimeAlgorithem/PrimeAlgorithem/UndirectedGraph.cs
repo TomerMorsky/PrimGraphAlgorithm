@@ -61,6 +61,11 @@ namespace PrimeAlgorithem
             return fromVertex.IsNeighbor(toVertex);
         }
 
+        public Edge GetEdge(Vertex fromVertex, Vertex toVertex)
+        {
+            return fromVertex.GetEdgeWithVertex(toVertex);
+        }
+
         public bool HasEdge(int fromVertexIndex, int toVertexIndex)
         {
             var fromVertex = Vertices[fromVertexIndex];

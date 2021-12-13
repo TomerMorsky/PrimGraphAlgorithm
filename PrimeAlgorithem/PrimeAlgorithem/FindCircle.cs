@@ -28,6 +28,7 @@ namespace PrimeAlgorithem
                 if (!neighbor.IsVisited())
                 {
                     neighbor.DFS_pi = vertex;
+                    neighbor.lowestWeightToVertex = edge.Weight;
                     var vertexDetectCycle = FindCycleUtil(neighbor, vertex);
 
                     if (vertexDetectCycle != null)

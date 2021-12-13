@@ -62,6 +62,11 @@ namespace PrimeAlgorithem
             return Edges.Any(edge => edge.Destination.Equals(neighbor));
         }
 
+        public Edge GetEdgeWithVertex(Vertex neighbor)
+        {
+            return Edges.Where(edge => edge.Destination.Equals(neighbor)).First();
+        }
+
         public void RemoveNeighbor(Vertex neighbor)
         {
             Edges.Remove(new Edge(this, neighbor));

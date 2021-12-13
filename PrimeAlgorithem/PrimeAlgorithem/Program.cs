@@ -14,20 +14,22 @@ namespace PrimeAlgorithem
             var graph = GraphGenerator.GenerateUndirectedGraphWithCircles(VERTICES_COUNT, EDGES_COUNT, MAX_EDGE_WEIGHT);
             graph.PrintGraph();
 
-            AddRandomEdge(graph, 50);
+            var newEdge = AddRandomEdge(graph, 2);
             graph.PrintGraph();
             //MSTUtills.AddEdgeToMstTree(graph, )
-            var x = FindCircle.FindCycle(graph, graph.Vertices[0]);
+
+            MSTUtills.AddEdgeToMstTree(graph, newEdge);
+            graph.PrintGraph();
 
             // Excercise 1
-            var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
-            mstTree.PrintGraph();
+            /*var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
+            mstTree.PrintGraph();*/
 
 
             // Excercise 2
         }
 
-        private static UndirectedGraph AddRandomEdge(UndirectedGraph graph, int maxEdgeWeight)
+        private static Edge AddRandomEdge(UndirectedGraph graph, int maxEdgeWeight)
         {
             const int MIN_EDGE_WEIGHT = 1;
             var rnd = new Random();
@@ -43,9 +45,8 @@ namespace PrimeAlgorithem
             }
 
             int randomWeight = rnd.Next(MIN_EDGE_WEIGHT, maxEdgeWeight);
-            graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
 
-            return graph;
+            return graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
         }
     }
 }
