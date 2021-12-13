@@ -11,6 +11,8 @@ namespace PrimeAlgorithem
         public static UndirectedGraph AddEdgeToMstTree(UndirectedGraph graph, Edge newEdge)
         {
             //FindCircle.RunDFS(graph, newEdge.Source);
+            graph.AddEdge(newEdge.Source, newEdge.Destination, newEdge.Weight);
+            var endCycleVertex = FindCircle.FindCycle(graph, newEdge.Source);
             return graph;
         }
     }
