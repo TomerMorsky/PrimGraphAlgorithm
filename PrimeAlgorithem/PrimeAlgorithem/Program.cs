@@ -5,48 +5,38 @@ namespace PrimeAlgorithem
     internal class Program
     {
         private const int VERTICES_COUNT = 5;
-        public const int EDGES_COUNT = 6;
-        public const int MAX_EDGE_WEIGHT = 7; // Minimun is 0 by default
+        private const int EDGES_COUNT = 6;
+        private const int MAX_EDGE_WEIGHT = 7;
+        private const int MIN_EDGE_WEIGHT = 1;
 
         static void Main(string[] args)
         {
             Console.WriteLine("Format explain: (to - destenation vertex id, w = weight of edge to destenation vertex)");
-            var graph = GraphGenerator.GenerateUndirectedGraphWithCircles(VERTICES_COUNT, EDGES_COUNT, MAX_EDGE_WEIGHT);
-            graph.PrintGraph();
-
-            var newEdge = AddRandomEdge(graph, 2);
-            graph.PrintGraph();
-            //MSTUtills.AddEdgeToMstTree(graph, )
-
-            MSTUtills.AddEdgeToMstTree(graph, newEdge);
+            var graph = GraphGenerator.GenerateUndirectedGraphWithCircles(VERTICES_COUNT, EDGES_COUNT, MIN_EDGE_WEIGHT, MAX_EDGE_WEIGHT);
+            Console.WriteLine("Generated graph");
             graph.PrintGraph();
 
             // Excercise 1
-            /*var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
-            mstTree.PrintGraph();*/
-
+            var mstTree = Prime.GetMstPrim(graph, graph.Vertices[0]);
+            Console.WriteLine("MST graph - ex 1");
+            mstTree.PrintGraph();
 
             // Excercise 2
-        }
+            // No changing in mst
+            var newEdge = mstTree.AddRandomEdge(mstTree, 10, 15);
+            Console.WriteLine("The new edge: " + newEdge.Source.Id + " -> " + newEdge.Destination.Id + " weight: " + newEdge.Weight);
 
-        private static Edge AddRandomEdge(UndirectedGraph graph, int maxEdgeWeight)
-        {
-            const int MIN_EDGE_WEIGHT = 1;
-            var rnd = new Random();
-            var numberOfVerties = graph.Vertices.Count;
+            MSTUtills.AddEdgeToMstTree(mstTree, newEdge);
+            Console.WriteLine("MST Graph after taking care of the new edge");
+            mstTree.PrintGraph();
 
-            int fromVertexIndex = rnd.Next(numberOfVerties);
-            int toVertexIndex = rnd.Next(numberOfVerties);
+            // Mst change
+            newEdge = mstTree.AddRandomEdge(mstTree, 1, 2);
+            Console.WriteLine("The new edge: " + newEdge.Source.Id + " -> " + newEdge.Destination.Id + " weight: " + newEdge.Weight);
 
-            while (fromVertexIndex == toVertexIndex || graph.HasEdge(fromVertexIndex, toVertexIndex))
-            {
-                fromVertexIndex = rnd.Next(numberOfVerties);
-                toVertexIndex = rnd.Next(numberOfVerties);
-            }
-
-            int randomWeight = rnd.Next(MIN_EDGE_WEIGHT, maxEdgeWeight);
-
-            return graph.AddEdge(fromVertexIndex, toVertexIndex, randomWeight);
+            MSTUtills.AddEdgeToMstTree(mstTree, newEdge);
+            Console.WriteLine("MST Graph after taking care of the new edge");
+            mstTree.PrintGraph();
         }
     }
 }

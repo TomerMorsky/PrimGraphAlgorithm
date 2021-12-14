@@ -14,7 +14,7 @@ namespace PrimeAlgorithem
         {
             var undirectedGraph = CreateConnectedGraphWithoutCircles(numberOfVerties, maxEdgeWeight);
 
-            var numberOfEdgesToAdd = numberOfEdges - numberOfVerties - 1;
+            var numberOfEdgesToAdd = numberOfEdges - (numberOfVerties - 1);
 
             for (int i = 0; i < numberOfEdgesToAdd; i++)
             {
