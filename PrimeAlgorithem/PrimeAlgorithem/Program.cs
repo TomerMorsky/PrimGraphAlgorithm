@@ -4,9 +4,9 @@ namespace PrimeAlgorithem
 {
     internal class Program
     {
-        private const int VERTICES_COUNT = 5;
-        private const int EDGES_COUNT = 6;
-        private const int MAX_EDGE_WEIGHT = 7;
+        private const int VERTICES_COUNT = 20;
+        private const int EDGES_COUNT = 50;
+        private const int MAX_EDGE_WEIGHT = 30;
         private const int MIN_EDGE_WEIGHT = 1;
 
         static void Main(string[] args)
@@ -23,7 +23,7 @@ namespace PrimeAlgorithem
 
             // Excercise 2
             // No changing in mst
-            var newEdge = mstTree.AddRandomEdge(mstTree, 10, 15);
+            var newEdge = mstTree.AddRandomEdge(mstTree, 30, 40);
             Console.WriteLine("The new edge: " + newEdge.Source.Id + " -> " + newEdge.Destination.Id + " weight: " + newEdge.Weight);
 
             MSTUtills.AddEdgeToMstTree(mstTree, newEdge);
